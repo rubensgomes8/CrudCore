@@ -175,7 +175,6 @@ namespace crudmysql.Controllers
         {
             try
             {
-
                 var usuario = _context.Usuarios.SingleOrDefault(m => m.Id == id);
                 _context.Usuarios.Remove(usuario);
                 _context.SaveChanges();
