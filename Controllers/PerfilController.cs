@@ -73,23 +73,33 @@ namespace crudmysql.Controllers
             var objetoPerfil = JsonConvert.DeserializeObject<Perfil>(perfil);
             var listaFuncionalidades = JsonConvert.DeserializeObject<List<Funcionalidade>>(funcionalidades);
 
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(objetoPerfil);
-                if (listaFuncionalidades.Count() > 0)
+                if (ModelState.IsValid)
                 {
-                    foreach (Funcionalidade item in listaFuncionalidades)
+                    _context.Add(objetoPerfil);
+                    if (listaFuncionalidades.Count() > 0)
                     {
-                        var funcionalidade = _context.Funcionalidades.SingleOrDefault(m => m.IdFuncionalidade == item.IdFuncionalidade);
-                        funcionalidade.IdPerfil = objetoPerfil.IdPerfil;
-                        _context.Update(funcionalidade);
+                        foreach (Funcionalidade item in listaFuncionalidades)
+                        {
+                            var funcionalidade = _context.Funcionalidades.SingleOrDefault(m => m.IdFuncionalidade == item.IdFuncionalidade);
+                            funcionalidade.IdPerfil = objetoPerfil.IdPerfil;
+                            _context.Update(funcionalidade);
+                        }
                     }
                 }
+
+                _context.SaveChanges();
+                TempData["Message"] = "Perfil cadastrado com sucesso";
+                return RedirectToAction(nameof(Index));
+
             }
 
-            _context.SaveChanges();
-            TempData["Message"] = "Perfil cadastrado com sucesso";
-            return RedirectToAction(nameof(Index));
+            catch (Exception)
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao salvar perfil";
+                return View(objetoPerfil);
+            }
         }
 
         /// <summary>
@@ -147,6 +157,7 @@ namespace crudmysql.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            TempData["MessageError"] = "Ocorreu um erro ao alterar perfil";
             return View(perfil);
         }
 
@@ -180,10 +191,18 @@ namespace crudmysql.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var perfil = _context.Perfis.SingleOrDefault(m => m.IdPerfil == id);
-            _context.Perfis.Remove(perfil);
-            _context.SaveChanges();
-            TempData["Message"] = "Perfil excluido com sucesso";
+            try
+            {
+                var perfil = _context.Perfis.SingleOrDefault(m => m.IdPerfil == id);
+                _context.Perfis.Remove(perfil);
+                _context.SaveChanges();
+                TempData["Message"] = "Perfil excluido com sucesso";
+            }
+            catch (Exception)
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao excluir perfil";
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

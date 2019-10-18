@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using crudmysql.Models;
+using System;
 
 namespace crudmysql.Controllers
 {
@@ -63,13 +64,24 @@ namespace crudmysql.Controllers
         [HttpPost]
         public ActionResult Create([Bind("IdFuncionalidade,Nome,Descricao,IdPerfil")] Funcionalidade funcionalidade)
         {
-            if (ModelState.IsValid)
+
+            try
             {
-                _context.Add(funcionalidade);
-                _context.SaveChanges();
-                TempData["Message"] = "Funcionalidade cadastrada com sucesso";
-                return RedirectToAction(nameof(Index));
+
+                if (ModelState.IsValid)
+                {
+                    _context.Add(funcionalidade);
+                    _context.SaveChanges();
+                    TempData["Message"] = "Funcionalidade cadastrada com sucesso";
+                    return RedirectToAction(nameof(Index));
+                }
             }
+
+            catch
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao salvar funcionalidade";
+            }
+
             return View(funcionalidade);
         }
 
@@ -108,6 +120,7 @@ namespace crudmysql.Controllers
                 return NotFound();
             }
 
+
             if (ModelState.IsValid)
             {
                 try
@@ -129,6 +142,7 @@ namespace crudmysql.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            TempData["MessageError"] = "Ocorreu um erro ao editar funcionalidade";
             return View(funcionalidade);
         }
 
@@ -162,11 +176,22 @@ namespace crudmysql.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var funcionalidade = _context.Funcionalidades.SingleOrDefault(m => m.IdFuncionalidade == id);
-            _context.Funcionalidades.Remove(funcionalidade);
-            _context.SaveChanges();
-            TempData["Message"] = "Funcionalidade excluida com sucesso";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+
+                var funcionalidade = _context.Funcionalidades.SingleOrDefault(m => m.IdFuncionalidade == id);
+                _context.Funcionalidades.Remove(funcionalidade);
+                _context.SaveChanges();
+                TempData["Message"] = "Funcionalidade excluida com sucesso";
+                return RedirectToAction(nameof(Index));
+            }
+
+            catch (Exception)
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao excluir funcionalidade";
+            }
+
+            return View();
         }
 
 

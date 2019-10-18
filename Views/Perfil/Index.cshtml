@@ -16,6 +16,11 @@
     {
         <div class="alert alert-success">@TempData["Message"]</div>
     }
+
+    @if (TempData["MessageError"] != null)
+    {
+        <div class="alert alert-danger">@TempData["MessageError"]</div>
+    }
     <table class="table">
         <thead>
         <thead>

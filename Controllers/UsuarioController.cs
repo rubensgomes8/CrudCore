@@ -2,6 +2,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using crudmysql.Models;
+using System;
 
 namespace crudmysql.Controllers
 {
@@ -63,13 +64,21 @@ namespace crudmysql.Controllers
         [HttpPost]
         public ActionResult Create([Bind("Id,Nome,Idade,IdPerfil")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(usuario);
-                _context.SaveChanges();
-                TempData["Message"] = "Usuario cadastrado com sucesso";
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    _context.Add(usuario);
+                    _context.SaveChanges();
+                    TempData["Message"] = "Usuario cadastrado com sucesso";
+                    return RedirectToAction(nameof(Index));
+                }
             }
+            catch
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao salvar usuario";
+            }
+
             return View(usuario);
         }
 
@@ -130,6 +139,7 @@ namespace crudmysql.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            TempData["MessageError"] = "Ocorreu um erro ao alterar usuario";
             return View(usuario);
         }
 
@@ -163,10 +173,19 @@ namespace crudmysql.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var usuario = _context.Usuarios.SingleOrDefault(m => m.Id == id);
-            _context.Usuarios.Remove(usuario);
-            _context.SaveChanges();
-            TempData["Message"] = "Usuario excluido com sucesso";
+            try
+            {
+
+                var usuario = _context.Usuarios.SingleOrDefault(m => m.Id == id);
+                _context.Usuarios.Remove(usuario);
+                _context.SaveChanges();
+                TempData["Message"] = "Usuario excluido com sucesso";
+            }
+
+            catch (Exception)
+            {
+                TempData["MessageError"] = "Ocorreu um erro ao excluir usuario";
+            }
             return RedirectToAction(nameof(Index));
         }
 
