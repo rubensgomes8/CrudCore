@@ -1,0 +1,25 @@
+c:\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.deps.json
+c:\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.runtimeconfig.json
+c:\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.runtimeconfig.dev.json
+C:\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.dll
+C:\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.pdb
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.csprojResolveAssemblyReference.cache
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.csproj.CoreCompileInputs.cache
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.AssemblyInfoInputs.cache
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.AssemblyInfo.cs
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.dll
+C:\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.pdb
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.deps.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.runtimeconfig.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.runtimeconfig.dev.json
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.dll
+C:\Users\rubens.gomes\3D Objects\crudmysql\bin\Debug\netcoreapp2.0\crudmysql.pdb
+C:\Users\rubens.gomes\3D Objects\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.csprojAssemblyReference.cache
+C:\Users\rubens.gomes\3D Objects\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.AssemblyInfoInputs.cache
+C:\Users\rubens.gomes\3D Objects\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.AssemblyInfo.cs
+C:\Users\rubens.gomes\3D Objects\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.dll
+C:\Users\rubens.gomes\3D Objects\crudmysql\obj\Debug\netcoreapp2.0\crudmysql.pdb

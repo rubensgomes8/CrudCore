@@ -1,0 +1,54 @@
+@model crudmysql.Models.Perfil
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualizar Perfil</title>
+</head>
+<body>
+
+    <div>
+        <h4>Visualizar Perfil</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @if (Model.Funcionalidades.Count > 0)
+        {
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nome Funcionalidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Funcionalidades)
+                    {
+                        <tr>
+                            <td>@item.Nome</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        <a asp-action="Edit" asp-route-id="@Model.IdPerfil">Editar</a> |
+        <a asp-action="Index">Voltar para Lista</a>
+    </div>
+</body>
+</html>

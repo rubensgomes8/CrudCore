@@ -1,0 +1,42 @@
+@model crudmysql.Models.Funcionalidade
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Visualizar Funcionalidade</title>
+</head>
+<body>
+
+    <div>
+        <h4>Visualizar Funcionalidade</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Perfil)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Perfil.Nome)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.IdFuncionalidade">Editar</a> |
+        <a asp-action="Index">Voltar para Lista</a>
+    </div>
+</body>
+</html>
